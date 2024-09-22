@@ -26,4 +26,6 @@ JS Backend COurse Workshop
 
 8. Extract partials
 
-9. Add base movie service
+9. Add service and data layer
+
+10. Add create service and detail view

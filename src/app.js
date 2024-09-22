@@ -14,6 +14,7 @@ app.engine('hbs', handlebars.engine({
 app.set('view engine', 'hbs');
 app.set('views', './src/views');
 
+app.use(express.urlencoded({extended: false}));
 // sets up static files dir
 app.use(express.static('public'));
 

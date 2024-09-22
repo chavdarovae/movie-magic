@@ -3,8 +3,9 @@ import movieService from '../services/movie-service.js';
 
 const router = Router();
 
-router.get('/', (req, res) => {
-    res.render('home', { movies: movieService.getAll()});
+router.get('/', async (req, res) => {
+    const movies = await movieService.getAll();
+    res.render('home', { movies });
 });
 
 router.get('/about', (req, res) => {
