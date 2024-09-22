@@ -14,3 +14,4 @@ JS Backend COurse Workshop
 
 4. Add resources
 
+5. Set up static routes
