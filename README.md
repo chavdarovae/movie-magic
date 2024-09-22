@@ -15,3 +15,7 @@ JS Backend COurse Workshop
 4. Add resources
 
 5. Set up static routes
+
+6. Render Home page
+
+7. Add routers and controllers
