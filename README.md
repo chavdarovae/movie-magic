@@ -29,3 +29,5 @@ JS Backend COurse Workshop
 9. Add service and data layer
 
 10. Add create service and detail view
+
+11. Add serach page

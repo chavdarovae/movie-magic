@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
-import uniqid from 'uniqid';
+
 
 const dbPath = path.resolve('./src/db.json');
 
@@ -19,30 +19,19 @@ async function getAll() {
 }
 
 
-async function getMovieById(movieId) {
+async function getOneById(movieId) {
     const data = await getDbData();
     return data.movies.find(m => m.id.toString() === movieId);
 }
 
-
 async function create(movie) {
     const data = await getDbData();
-    const newMovie  = {
-        id: uniqid(),
-        title: movie.title,
-        genre: movie.genre,
-        director: movie.director,
-        year: movie.year,
-        imageUrl: movie.image,
-        rating: movie.rating,
-        description: movie.description,
-    }
-    data.movies.push(newMovie)
+    data.movies.push(movie);
     return saveDataInDb(data);
 }
 
 export default {
     getAll,
-    getMovieById,
+    getOneById,
     create
 }

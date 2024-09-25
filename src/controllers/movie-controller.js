@@ -3,6 +3,7 @@ import movieService from '../services/movie-service.js';
 
 const router = Router();
 
+
 router.get('/create', async (req, res) => {
     res.render('movies/create');
 });
@@ -13,9 +14,25 @@ router.post('/create', async (req, res) => {
     res.redirect('/');
 });
 
-router.get('/:movieId', async (req, res) => {
-    const movie = await movieService.getMovieById(req.params.movieId);
+router.get('/:movieId/details', async (req, res) => {
+    const movie = await movieService.getOneById(req.params.movieId);
+    movie.ratingView = getRatingPresentation(movie.rating);
     res.render('movies/details', { movie });
 });
 
+router.get('/search', async (req, res) => {
+    res.render('movies/search');
+});
+
+router.post('/search', async (req, res) => {
+    console.log(req.body);
+    res.end();
+});
+
+function getRatingPresentation(rating) {
+    if(!Number.isInteger(rating)) {
+        return 'n\\a';
+    }
+    return '&#x2605; '.repeat(rating);
+}
 export default router;

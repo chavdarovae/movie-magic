@@ -1,13 +1,18 @@
+import uniqid from 'uniqid';
 import movieData from '../data/movie-data.js';
 
-const getAll = () => movieData.getAll();
+const getAll = () =>  movieData.getAll();
 
-const getMovieById = (id) => movieData.getMovieById(id);
+const getOneById = (id) => movieData.getOneById(id);
 
-const create = (movie) => movieData.create(movie);
+const create = (movie) => {
+    movie.id = uniqid();
+    movie.rating = Number(movie.rating); // business logic comes in here
+    return movieData.create(movie);
+};
 
 export default {
     getAll,
-    getMovieById,
+    getOneById,
     create
 }
