@@ -8,6 +8,12 @@ router.get('/', async (req, res) => {
     res.render('home', { movies });
 });
 
+router.get('/search', async (req, res) => {
+    const query = req.query;
+    const movies = await movieService.getAll(query);
+    res.render('home', {showSearch: true, movies, query });
+});
+
 router.get('/about', (req, res) => {
     res.render('home/about');
 });

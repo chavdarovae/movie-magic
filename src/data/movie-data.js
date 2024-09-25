@@ -13,9 +13,21 @@ function saveDataInDb(data) {
     return fs.writeFile(dbPath, JSON.stringify(data));
 }
 
-async function getAll() {
+async function getAll(filter = {}) {
     const data = await getDbData();
-    return data.movies;
+    let movies = data.movies;
+    if (filter?.title) {
+        movies = movies.filter(m => m.title.toLowerCase().includes(filter.title.toLowerCase()));
+    }
+
+    if (filter?.genre) {
+        movies = movies.filter(m => m.genre.toLowerCase() === filter.genre.toLowerCase());
+    }
+
+    if (filter?.year && !Number.isInteger(filter.year)) {
+        movies = movies.filter(m => m.year === filter.year);
+    }
+    return movies;
 }
 
 

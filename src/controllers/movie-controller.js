@@ -20,15 +20,6 @@ router.get('/:movieId/details', async (req, res) => {
     res.render('movies/details', { movie });
 });
 
-router.get('/search', async (req, res) => {
-    res.render('movies/search');
-});
-
-router.post('/search', async (req, res) => {
-    console.log(req.body);
-    res.end();
-});
-
 function getRatingPresentation(rating) {
     if(!Number.isInteger(rating)) {
         return 'n\\a';
